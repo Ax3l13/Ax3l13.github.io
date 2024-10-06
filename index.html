@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma Page de Films</title>
+    <title>Brefs</title>
     <style>
         body {
-            background-color: black;
+            background-color: #141414;
             color: white;
             font-family: Arial, sans-serif;
             margin: 0;
@@ -37,6 +37,11 @@
             height: calc(18% * 0.75);
             text-align: center;
             flex: 0 0 auto;
+            transition: transform 0.3s ease; /* Ajout de la transition */
+        }
+
+        .film:hover, .ad:hover {
+            transform: scale(1.1); /* Effet de grossissement */
         }
 
         .film img, .ad img {
@@ -81,12 +86,16 @@
             height: 100px; /* Ajustez la hauteur selon vos besoins */
             border: none;
         }
+
+        /* Styles spécifiques pour l'iframe du header */
+        iframe[src="header_test.html"] {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
     </style>
 </head>
 <body>
-    <iframe src="header.html"></iframe>
-
-    <h1>Bienvenue sur ma page de films</h1>
+    <iframe src="header_test.html"></iframe>
 
     <!-- Catégorie 1 -->
     <div class="category">
@@ -98,65 +107,6 @@
                 <a href="film1.html">
                     <img src="affiche1.jpg" alt="Film 1">
                     <h2>Film 1</h2>
-                </a>
-            </div>
-            <div class="film">
-                <a href="film2.html">
-                    <img src="affiche2.jpg" alt="Film 2">
-                    <h2>Film 2</h2>
-                </a>
-            </div>
-            <div class="film">
-                <a href="film3.html">
-                    <img src="affiche3.jpg" alt="Film 3">
-                    <h2>Film 3</h2>
-                </a>
-            </div>
-            <div class="film">
-                <a href="film4.html">
-                    <img src="affiche4.jpg" alt="Film 4">
-                    <h2>Film 4</h2>
-                </a>
-            </div>
-            <div class="film">
-                <a href="film5.html">
-                    <img src="affiche5.jpg" alt="Film 5">
-                    <h2>Film 5</h2>
-                </a>
-            </div>
-            <div class="film">
-                <a href="film6.html">
-                    <img src="affiche6.jpg" alt="Film 6">
-                    <h2>Film 6</h2>
-                </a>
-            </div>
-            <div class="film">
-                <a href="film7.html">
-                    <img src="affiche7.jpg" alt="Film 7">
-                    <h2>Film 7</h2>
-                </a>
-            </div>
-            <!-- Publicité de la catégorie 1 -->
-            <div class="ad">
-                <img src="pub1.jpg" alt="Publicité 1">
-                <p>Publicité 1</p>
-            </div>
-            <div class="film">
-                <a href="film8.html">
-                    <img src="affiche8.jpg" alt="Film 8">
-                    <h2>Film 8</h2>
-                </a>
-            </div>
-            <div class="film">
-                <a href="film9.html">
-                    <img src="affiche9.jpg" alt="Film 9">
-                    <h2>Film 9</h2>
-                </a>
-            </div>
-            <div class="film">
-                <a href="film10.html">
-                    <img src="affiche10.jpg" alt="Film 10">
-                    <h2>Film 10</h2>
                 </a>
             </div>
         </div>
