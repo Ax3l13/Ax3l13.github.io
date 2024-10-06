@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Page de Films</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .category {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .category h2 {
+            margin-bottom: 10px;
+        }
+
+        .film-container {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .film, .ad {
+            background-color: #333;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            width: 18%;
+            height: calc(18% * 0.75);
+            text-align: center;
+            flex: 0 0 auto;
+        }
+
+        .film img, .ad img {
+            width: 100%;
+            border-radius: 5px;
+            aspect-ratio: 2 / 1;
+        }
+
+        .film a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .ad {
+            background-color: #444;
+            color: yellow;
+        }
+
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2em;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .scroll-button.left {
+            left: 0;
+        }
+
+        .scroll-button.right {
+            right: 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100px; /* Ajustez la hauteur selon vos besoins */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="header_test.html"></iframe>
+
+    <h1>Bienvenue sur ma page de films</h1>
+
+    <!-- Catégorie 1 -->
+    <div class="category">
+        <h2>Catégorie 1</h2>
+        <button class="scroll-button left" onclick="scrollLeft('cat1')"><</button>
+        <div class="film-container" id="cat1">
+            <!-- Films de la catégorie 1 -->
+            <div class="film">
+                <a href="film1.html">
+                    <img src="affiche1.jpg" alt="Film 1">
+                    <h2>Film 1</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film2.html">
+                    <img src="affiche2.jpg" alt="Film 2">
+                    <h2>Film 2</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film3.html">
+                    <img src="affiche3.jpg" alt="Film 3">
+                    <h2>Film 3</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film4.html">
+                    <img src="affiche4.jpg" alt="Film 4">
+                    <h2>Film 4</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film5.html">
+                    <img src="affiche5.jpg" alt="Film 5">
+                    <h2>Film 5</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film6.html">
+                    <img src="affiche6.jpg" alt="Film 6">
+                    <h2>Film 6</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film7.html">
+                    <img src="affiche7.jpg" alt="Film 7">
+                    <h2>Film 7</h2>
+                </a>
+            </div>
+            <!-- Publicité de la catégorie 1 -->
+            <div class="ad">
+                <img src="pub1.jpg" alt="Publicité 1">
+                <p>Publicité 1</p>
+            </div>
+            <div class="film">
+                <a href="film8.html">
+                    <img src="affiche8.jpg" alt="Film 8">
+                    <h2>Film 8</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film9.html">
+                    <img src="affiche9.jpg" alt="Film 9">
+                    <h2>Film 9</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film10.html">
+                    <img src="affiche10.jpg" alt="Film 10">
+                    <h2>Film 10</h2>
+                </a>
+            </div>
+        </div>
+        <button class="scroll-button right" onclick="scrollRight('cat1')">></button>
+    </div>
+
+    <!-- Catégorie 2 -->
+    <div class="category">
+        <h2>Catégorie 2</h2>
+        <button class="scroll-button left" onclick="scrollLeft('cat2')"><</button>
+        <div class="film-container" id="cat2">
+            <!-- Films de la catégorie 2 -->
+            <div class="film">
+                <a href="film3.html">
+                    <img src="affiche3.jpg" alt="Film 3">
+                    <h2>Film 3</h2>
+                </a>
+            </div>
+            <div class="film">
+                <a href="film4.html">
+                    <img src="affiche4.jpg" alt="Film 4">
+                    <h2>Film 4</h2>
+                </a>
+            </div>
+            <!-- Publicité de la catégorie 2 -->
+            <div class="ad">
+                <img src="pub2.jpg" alt="Publicité 2">
+                <p>Publicité 2</p>
+            </div>
+        </div>
+        <button class="scroll-button right" onclick="scrollRight('cat2')">></button>
+    </div>
+
+    <!-- Ajoutez plus de catégories ici -->
+
+    <script>
+        function scrollLeft(categoryId) {
+            const container = document.getElementById(categoryId);
+            container.scrollBy({ left: -400, behavior: 'smooth' });
+        }
+
+        function scrollRight(categoryId) {
+            const container = document.getElementById(categoryId);
+            container.scrollBy({ left: 400, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
