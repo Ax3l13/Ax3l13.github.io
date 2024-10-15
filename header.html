@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+    <style>
+        body {
+            background-color: #141414;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #141414;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 36px; /* Taille augmentée de 1,5x */
+            font-weight: bold;
+            color: #e50914;
+            text-decoration: none;
+            margin-right: 50px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .nav-links a, .search-placeholder {
+            font-size: 27px; /* Taille augmentée de 1,5x */
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .search-placeholder:hover {
+            color: #e50914;
+        }
+        .search-placeholder:hover {
+            cursor: text;
+        }
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        .search-placeholder {
+            cursor: text;
+            text-align: center;
+        }
+        .search-bar {
+            font-size: 24px; /* Taille augmentée de 1,5x */
+            color: #fff;
+            background-color: #333;
+            border: 1px solid #444;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+            width: 30%;
+            max-width: 80%; /* Largeur maximale 80% */
+            transition: width 0.2s ease;
+        }
+        #results {
+            margin-top: 70px; /* Pour éviter que les résultats soient sous le header */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="acceuil.html" class="logo">Brefs</a>
+        <nav class="nav-links">
+            <a href="nouveautes.html">Nouveautés</a>
+            <a href="requetes.html">Requêtes</a>
+            <a href="donations.html">Donations</a>
+            <a href="recherche.html">Recherche</a>
+</body>
+</html>
