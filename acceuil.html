@@ -284,5 +284,151 @@
 }
   showQuestion();
   </script>
+  <script>
+  // Mélange un tableau (fonction utilitaire)
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  // Mélange les questions et leurs réponses
+  shuffleArray(questions);
+  questions.forEach(question => {
+    const correctAnswer = question.answers[question.correct];
+    shuffleArray(question.answers);
+    question.correct = question.answers.indexOf(correctAnswer);
+  });
+
+  let currentQuestionIndex = 0;
+  let timerInterval;
+  let selectedAnswers = [];
+
+  function showQuestion() {
+    if (currentQuestionIndex >= questions.length) {
+      alert("QCM terminé !");
+      return;
+    }
+
+    selectedAnswers = [];
+    const questionContainer = document.getElementById('question-container');
+    const questionNumberEl = document.getElementById('question-number');
+    const responseInfoEl = document.getElementById('response-info');
+    const choicesEl = document.getElementById('choices');
+    questionContainer.innerHTML = '';
+    choicesEl.innerHTML = '';
+
+    const questionData = questions[currentQuestionIndex];
+
+    questionNumberEl.textContent = `Question numéro ${currentQuestionIndex + 1}`;
+    responseInfoEl.textContent = questionData.multiple ? `Plusieurs réponses possibles (${questionData.correct.length} attendues)` : 'Une seule réponse possible';
+
+    const questionEl = document.createElement('div');
+    questionEl.classList.add('question');
+    questionEl.textContent = questionData.question;
+    questionContainer.appendChild(questionEl);
+
+    questionData.answers.forEach((answer, index) => {
+      const choiceEl = document.createElement('li');
+      const buttonEl = document.createElement('button');
+      buttonEl.textContent = answer;
+      buttonEl.onclick = () => selectAnswer(index, buttonEl, questionData.multiple, questionData.correct.length);
+      choiceEl.appendChild(buttonEl);
+      choicesEl.appendChild(choiceEl);
+    });
+
+    startTimer();
+  }
+
+  function selectAnswer(index, buttonEl, multiple, correctLength) {
+    if (multiple) {
+      if (selectedAnswers.includes(index)) {
+        selectedAnswers = selectedAnswers.filter(i => i !== index);
+        buttonEl.classList.remove('selected');
+      } else if (selectedAnswers.length < correctLength) {
+        selectedAnswers.push(index);
+        buttonEl.classList.add('selected');
+      } else {
+        const firstSelected = selectedAnswers.shift();
+        const firstSelectedButton = document.querySelectorAll('.choices button')[firstSelected];
+        firstSelectedButton.classList.remove('selected');
+        selectedAnswers.push(index);
+        buttonEl.classList.add('selected');
+      }
+    } else {
+      selectedAnswers = [index];
+      const choices = document.querySelectorAll('.choices button');
+      choices.forEach(button => button.classList.remove('selected'));
+      buttonEl.classList.add('selected');
+    }
+  }
+
+  function handleAnswer() {
+    clearInterval(timerInterval);
+    const questionData = questions[currentQuestionIndex];
+    const selectedButtons = document.querySelectorAll('.choices button.selected');
+
+    if (questionData.multiple) {
+      selectedButtons.forEach(button => {
+        const selectedAnswer = Array.from(button.parentNode.parentNode.children).indexOf(button.parentNode);
+        if (questionData.correct.includes(selectedAnswer)) {
+          button.classList.add('correct');
+        } else {
+          button.classList.add('incorrect');
+        }
+      });
+      questionData.correct.forEach(correctIndex => {
+        const correctButton = document.querySelector(`.choices li:nth-child(${correctIndex + 1}) button`);
+        correctButton.classList.add('correct');
+      });
+    } else {
+      const selectedAnswer = Array.from(selectedButtons[0].parentNode.parentNode.children).indexOf(selectedButtons[0].parentNode);
+      if (selectedAnswer === questionData.correct) {
+        selectedButtons[0].classList.add('correct');
+      } else {
+        selectedButtons[0].classList.add('incorrect');
+        const correctButton = document.querySelector(`.choices li:nth-child(${questionData.correct + 1}) button`);
+        correctButton.classList.add('correct');
+      }
+    }
+
+    setTimeout(() => {
+      currentQuestionIndex++;
+      showQuestion();
+    }, 2000);
+  }
+
+  function startTimer() {
+    const timerEl = document.getElementById('timer');
+    const skipButton = document.getElementById('skip-button');
+    skipButton.style.display = 'none';
+
+    timerEl.style.width = '100%';
+    timerEl.style.transition = 'none';
+
+    setTimeout(() => {
+      timerEl.style.transition = 'width 20s linear';
+      timerEl.style.width = '0%';
+    }, 50);
+
+    setTimeout(() => {
+      skipButton.style.display = 'block';
+    }, 10000);
+
+    timerInterval = setTimeout(() => {
+      handleAnswer();
+    }, 20000);
+
+    skipButton.onclick = () => {
+      clearInterval(timerInterval);
+      skipButton.style.display = 'none';
+      handleAnswer();
+    };
+  }
+
+  showQuestion();
+</script>
+
 </body>
 </html>
