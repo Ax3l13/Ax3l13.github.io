@@ -112,10 +112,32 @@
   </ul>
   
   <script>
-    const questions = [
-      { question: "Comment créer un site web ?", answers: ["A", "B", "C", "D"], correct: 0, multiple: false },
-      { question: "Question facile 1?", answers: ["A", "B", "C", "D"], correct: [0, 1], multiple: true },
-      // Ajoutez d'autres questions ici...
+const questions = [
+  { question: "Quelle est la première étape pour configurer une machine virtuelle vulnérable ?", answers: ["A. Installer un système d'exploitation vulnérable", "B. Installer un logiciel antivirus", "C. Mettre à jour le système d'exploitation", "D. Activer les mises à jour automatiques"], correct: 0, multiple: false },
+  { question: "Quel outil peut être utilisé pour scanner les vulnérabilités d'un système ?", answers: ["A. Nessus", "B. Adobe Reader", "C. Microsoft Office", "D. Google Chrome"], correct: 0, multiple: false },
+  { question: "Qu'est-ce qu'une vulnérabilité critique ?", answers: ["A. Une faille mineure", "B. Une faille facilement exploitable", "C. Une faille non-exploitable", "D. Une faille inconnue"], correct: 1, multiple: false },
+  { question: "Pourquoi désactiver les mises à jour automatiques sur une machine virtuelle vulnérable ?", answers: ["A. Pour économiser de l'espace disque", "B. Pour améliorer les performances", "C. Pour maintenir la machine vulnérable", "D. Pour éviter les redémarrages"], correct: 2, multiple: false },
+  { question: "Quel est l'objectif de l'exploitation des vulnérabilités ?", answers: ["A. Identifier les failles", "B. Mettre à jour le système", "C. Compromettre les données", "D. Améliorer la sécurité"], correct: 2, multiple: false },
+  { question: "Qu'est-ce qu'un exploit ?", answers: ["A. Un logiciel antivirus", "B. Un programme utilisé pour exploiter une vulnérabilité", "C. Un pare-feu", "D. Une mise à jour de sécurité"], correct: 1, multiple: false },
+  { question: "Quel outil peut identifier les vulnérabilités connues présentes dans un système ?", answers: ["A. OpenVAS", "B. VLC Media Player", "C. Steam", "D. Spotify"], correct: 0, multiple: false },
+  { question: "Quelles mesures de protection peuvent être prises après l'exploitation d'une vulnérabilité ?", answers: ["A. Appliquer les correctifs de sécurité", "B. Installer un logiciel antivirus", "C. Configurer un pare-feu", "D. Toutes ces réponses"], correct: 3, multiple: false },
+  { question: "Pourquoi est-il important de réexécuter un scan de vulnérabilités après avoir appliqué des mesures de protection ?", answers: ["A. Pour vérifier l'efficacité des mesures", "B. Pour économiser de l'espace disque", "C. Pour améliorer les performances", "D. Pour éviter les redémarrages"], correct: 0, multiple: false },
+  { question: "Où peut-on trouver des exploits spécifiques à des vulnérabilités ?", answers: ["A. Exploit Database", "B. Google Docs", "C. Microsoft Excel", "D. Facebook"], correct: 0, multiple: false },
+  { question: "Quelle est la première étape lors de l'analyse des vulnérabilités ?", answers: ["A. Créer une machine virtuelle", "B. Désactiver les mises à jour automatiques", "C. Exécuter un scan de vulnérabilités", "D. Appliquer les correctifs de sécurité"], correct: 2, multiple: false },
+  { question: "Quel type de système d'exploitation est utilisé pour l'analyse des vulnérabilités dans cette mise en situation ?", answers: ["A. Windows XP", "B. macOS", "C. Linux", "D. Android"], correct: 0, multiple: false },
+  { question: "Quel est le but de désactiver les mises à jour automatiques ?", answers: ["A. Pour économiser de l'espace disque", "B. Pour maintenir la machine vulnérable", "C. Pour améliorer les performances", "D. Pour éviter les redémarrages"], correct: 1, multiple: false },
+  { question: "Qu'est-ce qu'un scan de vulnérabilités ?", answers: ["A. Un examen des failles de sécurité", "B. Une mise à jour de sécurité", "C. Un logiciel antivirus", "D. Une analyse des performances système"], correct: 0, multiple: false },
+  { question: "Pourquoi est-il important d'identifier les vulnérabilités critiques ?", answers: ["A. Pour économiser de l'espace disque", "B. Pour améliorer les performances", "C. Pour corriger les failles les plus dangereuses", "D. Pour éviter les redémarrages"], correct: 2, multiple: false },
+  { question: "Quelle est la principale raison pour utiliser un exploit ?", answers: ["A. Pour économiser de l'espace disque", "B. Pour compromettre la sécurité d'un système", "C. Pour améliorer les performances", "D. Pour éviter les redémarrages"], correct: 1, multiple: false },
+  { question: "Quelle mesure de protection peut empêcher une exploitation de vulnérabilité ?", answers: ["A. Appliquer les correctifs de sécurité", "B. Désactiver les mises à jour automatiques", "C. Installer des jeux", "D. Utiliser des logiciels pirates"], correct: 0, multiple: false },
+  { question: "Quel outil est utilisé pour exécuter un scan de vulnérabilités ?", answers: ["A. OpenVAS", "B. Internet Explorer", "C. Skype", "D. Outlook"], correct: 0, multiple: false },
+  { question: "Quel est l'objectif de configurer un pare-feu ?", answers: ["A. Bloquer les tentatives d'accès non autorisées", "B. Améliorer les performances", "C. Économiser de l'espace disque", "D. Désactiver les mises à jour automatiques"], correct: 0, multiple: false },
+  { question: "Que faire après avoir appliqué des mesures de protection ?", answers: ["A. Réexécuter le scan de vulnérabilités", "B. Désactiver les mises à jour automatiques", "C. Installer un logiciel antivirus", "D. Appliquer un pare-feu"], correct: 0, multiple: false },
+  { question: "Qu'est-ce qu'une machine virtuelle ?", answers: ["A. Un logiciel qui émule un autre système d'exploitation", "B. Un antivirus", "C. Un pare-feu", "D. Un lecteur multimédia"], correct: 0, multiple: false },
+  { question: "Pourquoi utiliser une version non mise à jour de Windows XP ?", answers: ["A. Pour étudier les vulnérabilités", "B. Pour économiser de l'espace disque", "C. Pour améliorer les performances", "D. Pour éviter les redémarrages"], correct: 0, multiple: false },
+  { question: "Que fait Nessus ?", answers: ["A. Exécute un scan de vulnérabilités", "B. Lit des fichiers multimédia", "C. Gère les courriers électroniques", "D. Édite des documents"], correct: 0, multiple: false },
+  { question: "Quelle est l'étape suivante après l'analyse des résultats du scan ?", answers: ["A. Identifier les vulnérabilités critiques", "B. Installer un logiciel antivirus", "C. Désactiver les mises à jour automatiques", "D. Mettre à jour le système"], correct: 0, multiple: false },
+  { question: "Pourquoi noter les résultats de l'exploitation ?", answers: ["A. Pour documenter les actions entreprises", "B. Pour économiser de l'espace disque", "C. Pour améliorer les performances", "D. Pour éviter les redémarrages"], correct: 0, multiple: false },
     ];
     
     let currentQuestionIndex = 0;
