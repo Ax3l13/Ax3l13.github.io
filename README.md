@@ -98,9 +98,8 @@
       height: 20px;
       background-color: #ddd;
       margin: 5px;
-      display: block;
+      display: inline-block;
       border-radius: 4px;
-      cursor: pointer;
     }
     .question-square.correct {
       background-color: green;
@@ -113,16 +112,6 @@
       left: 10px;
       top: 50%;
       transform: translateY(-50%);
-      display: flex;
-      flex-wrap: wrap;
-      width: 80%; /* Ajusté pour une largeur plus appropriée */
-    }
-    #score-container {
-      display: none;
-      margin-top: 20px;
-    }
-    .button-container {
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -134,10 +123,7 @@
     <div class="timer" id="timer"></div>
   </div>
   <ul class="choices" id="choices"></ul>
-  <div class="button-container">
-    <button id="skip-button">Passer</button>
-    <button id="quit-button" style="display:none;">Quitter</button>
-  </div>
+  <button id="skip-button">Passer</button>
 
   <div id="question-squares"></div>
   <div id="score-container">Score: <span id="score">0</span></div>
@@ -168,8 +154,6 @@
       for (let i = 0; i < 40; i++) {
         const square = document.createElement('div');
         square.classList.add('question-square');
-        // Désactive l'interaction sur les carrés pendant le quiz
-        square.style.pointerEvents = 'none';
         questionSquaresContainer.appendChild(square);
       }
     }
@@ -183,7 +167,7 @@
     // Affichage de la question actuelle
     function showQuestion() {
       if (currentQuestionIndex >= questions.length) {
-        showFinalPage();
+        alert(`QCM terminé ! Vous avez obtenu ${score}/40`);
         return;
       }
 
@@ -253,35 +237,28 @@
     function startTimer() {
       const timerEl = document.getElementById('timer');
       const skipButton = document.getElementById('skip-button');
-      skipButton.style.display = 'none'; // Masque le bouton "Passer"
+      skipButton.style.display = 'none'; // Masque le bouton au début
 
       timerEl.style.width = '100%';
-      timerEl.style.transition = 'width 30s linear';
-      setTimeout(() => handleAnswer(), 30000); // Temps pour répondre à chaque question
+      timerEl.style.transition = 'none';
+
+      setTimeout(() => {
+        timerEl.style.transition = 'width 20s linear';
+        timerEl.style.width = '0%';
+      }, 50);
+
+      setTimeout(() => {
+        skipButton.style.display = 'block'; // Affiche le bouton pour passer
+        handleAnswer();
+      }, 20000);
     }
 
-    function showFinalPage() {
-      const scoreContainer = document.getElementById('score-container');
-      const scoreEl = document.getElementById('score');
-      scoreEl.textContent = score;
-      scoreContainer.style.display = 'block';
-
-      const questionSquaresContainer = document.getElementById('question-squares');
-      questionSquaresContainer.style.display = 'none';
-
-      const qcmContainer = document.getElementById('qcm-container');
-      qcmContainer.innerHTML = "<h2>Votre score : " + score + " / 40</h2>";
-
-      const quitButton = document.getElementById('quit-button');
-      quitButton.style.display = 'none';  // Masquer le bouton Quitter
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
     }
-
-    document.getElementById('skip-button').onclick = () => {
-      currentQuestionIndex++;
-      showQuestion();
-    };
-
-    document.getElementById('quit-button').onclick = showFinalPage;
 
     createQuestionSquares();
     showQuestion();
