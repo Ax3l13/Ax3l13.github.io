@@ -79,7 +79,6 @@
       background-color: red;
     }
     .timer {
-      margin-top: 20px;
       background-color: #007bff;
       height: 10px;
       border-bottom-left-radius: 8px;
@@ -93,25 +92,6 @@
       text-align: right;
       margin-top: 10px;
       font-size: 14px;
-    }
-    .summary-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      height: auto;
-      text-align: left;
-      position: relative;
-      margin-top: 20px;
-      display: none;
-    }
-    .summary-container h2 {
-      text-align: center;
-    }
-    .summary-item {
-      padding: 10px 0;
-      border-bottom: 1px solid #ddd;
     }
   </style>
 </head>
@@ -127,10 +107,6 @@
   <ul class="choices" id="choices">
     <!-- Les choix de réponse apparaîtront ici -->
   </ul>
-  <div class="summary-container" id="summary-container">
-    <h2>Résultats du QCM</h2>
-    <div id="summary"></div>
-  </div>
   
   <script>
     const questions = [
@@ -142,20 +118,10 @@
     let currentQuestionIndex = 0;
     let timerInterval;
     let selectedAnswers = [];
-    let userAnswers = [];
-    let score = 0;
-
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-    }
 
     function showQuestion() {
       if (currentQuestionIndex >= questions.length) {
-        showSummary();
+        alert("QCM terminé !");
         return;
       }
       
@@ -177,10 +143,7 @@
       questionEl.textContent = questionData.question;
       questionContainer.appendChild(questionEl);
 
-      const shuffledAnswers = shuffle([...questionData.answers]);
-      questionData.correct = shuffledAnswers.map((_, index) => questionData.answers.indexOf(shuffledAnswers[index]));
-
-      shuffledAnswers.forEach((answer, index) => {
+      questionData.answers.forEach((answer, index) => {
         const choiceEl = document.createElement('li');
         const buttonEl = document.createElement('button');
         buttonEl.textContent = answer;
@@ -219,7 +182,6 @@
       clearInterval(timerInterval);
       const questionData = questions[currentQuestionIndex];
       const selectedButtons = document.querySelectorAll('.choices button.selected');
-      let correct = true;
       
       if (questionData.multiple) {
         selectedButtons.forEach(button => {
@@ -228,7 +190,6 @@
             button.classList.add('correct');
           } else {
             button.classList.add('incorrect');
-            correct = false;
           }
         });
         questionData.correct.forEach(correctIndex => {
@@ -243,18 +204,8 @@
           selectedButtons[0].classList.add('incorrect');
           const correctButton = document.querySelector(`.choices li:nth-child(${questionData.correct + 1}) button`);
           correctButton.classList.add('correct');
-          correct = false;
         }
       }
-
-      userAnswers.push({
-        question: questionData.question,
-        correct: correct,
-        selectedAnswers: selectedAnswers.map(i => shuffledAnswers[i]),
-        correctAnswers: questionData.correct.map(i => shuffledAnswers[i])
-      });
-
-      if (correct) score++;
 
       setTimeout(() => {
         currentQuestionIndex++;
@@ -263,3 +214,19 @@
     }
 
     function startTimer() {
+      const timerEl = document.getElementById('timer');
+      timerEl.style.width = '100%';
+      timerEl.style.transition = 'none';
+      setTimeout(() => {
+        timerEl.style.transition = 'width 10s linear';
+        timerEl.style.width = '0%';
+      }, 50);
+      timerInterval = setTimeout(() => {
+        handleAnswer();
+      }, 10000);
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
