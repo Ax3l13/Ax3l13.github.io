@@ -110,49 +110,49 @@
   <ul class="choices" id="choices">
     <!-- Les choix de réponse apparaîtront ici -->
   </ul>
+  <button id="skip-button">Passer</button>
   
   <script>
     const questions = [
-      // Niveau facile (vert)
-      { question: "Quelle étape est cruciale pour maintenir une machine virtuelle vulnérable ?", answers: ["Activer les mises à jour automatiques", "Désactiver les mises à jour automatiques", "Changer le mot de passe administrateur", "Configurer un pare-feu"], correct: 1, multiple: false, level: 'facile' },
-      { question: "Quel outil n'est pas utilisé pour le scan de vulnérabilités ?", answers: ["Nessus", "OpenVAS", "Wireshark", "Nexpose"], correct: 2, multiple: false, level: 'facile' },
-      { question: "Pourquoi désactiver les mises à jour automatiques ?", answers: ["Pour économiser de la bande passante", "Pour maintenir la machine vulnérable", "Pour améliorer les performances", "Pour éviter les redémarrages"], correct: 1, multiple: false, level: 'facile' },
-      { question: "Quelle est la première étape pour analyser les vulnérabilités ?", answers: ["Télécharger un exploit", "Exécuter un scan de vulnérabilités", "Configurer un pare-feu", "Installer un antivirus"], correct: 1, multiple: false, level: 'facile' },
-      { question: "Quels résultats sont attendus après un scan de vulnérabilités ?", answers: ["Liste des mises à jour disponibles", "Liste des vulnérabilités connues", "Rapport de performance", "Analyse du trafic réseau"], correct: 1, multiple: false, level: 'facile' },
-      { question: "Quel outil est utilisé pour identifier les vulnérabilités ?", answers: ["VirtualBox", "Nessus", "Wireshark", "Metasploit"], correct: 1, multiple: false, level: 'facile' },
-      { question: "Que faire après avoir identifié une vulnérabilité critique ?", answers: ["Redémarrer la machine", "Télécharger un exploit spécifique", "Désinstaller le système", "Modifier les paramètres réseau"], correct: 1, multiple: false, level: 'facile' },
-      { question: "Quel est le but d'un exploit ?", answers: ["Corriger une vulnérabilité", "Accéder à des données sensibles", "Améliorer la performance du système", "Gérer les utilisateurs"], correct: 1, multiple: false, level: 'facile' },
-      
-      // Niveau moyen (orange)
-      { question: "Quels outils sont utilisés pour l'analyse des vulnérabilités ?", answers: ["Nessus, OpenVAS, Nexpose", "Wireshark, TCPDump, Netcat", "Metasploit, Armitage, Cobalt Strike", "VirtualBox, VMware, Hyper-V"], correct: 0, multiple: true, level: 'moyen' },
-      { question: "Pourquoi exécuter un scan de vulnérabilités ?", answers: ["Pour identifier les vulnérabilités connues", "Pour améliorer les performances système", "Pour optimiser la consommation énergétique", "Pour surveiller le trafic réseau"], correct: 0, multiple: false, level: 'moyen' },
-      { question: "Quelle mesure de protection peut atténuer l'exploitation d'une vulnérabilité ?", answers: ["Changer le fond d'écran", "Appliquer les correctifs de sécurité", "Augmenter la résolution d'écran", "Modifier le thème du système"], correct: 1, multiple: false, level: 'moyen' },
-      { question: "Quel est le rôle d'un pare-feu dans la protection des systèmes ?", answers: ["Bloquer les mises à jour", "Filtrer le trafic réseau", "Améliorer les performances graphiques", "Gérer les utilisateurs"], correct: 1, multiple: false, level: 'moyen' },
-      { question: "Comment vérifier l'efficacité des mesures de protection ?", answers: ["Redémarrer la machine", "Réexécuter le scan de vulnérabilités", "Modifier les paramètres réseau", "Installer un nouveau système"], correct: 1, multiple: false, level: 'moyen' },
-      { question: "Quelle étape précède l'exécution d'un exploit ?", answers: ["Télécharger le correctif de sécurité", "Configurer un pare-feu", "Analyser les résultats du scan", "Désactiver les mises à jour automatiques"], correct: 2, multiple: false, level: 'moyen' },
-      { question: "Quels sont les objectifs principaux d'une analyse de vulnérabilités ?", answers: ["Identifier, exploiter, protéger", "Installer, configurer, redémarrer", "Désactiver, mettre à jour, sauvegarder", "Analyser, optimiser, supprimer"], correct: 0, multiple: false, level: 'moyen' },
-      { question: "Quels résultats sont obtenus après l'exploitation d'une vulnérabilité ?", answers: ["Amélioration des performances", "Accès obtenu, données compromises", "Liste des utilisateurs", "Rapport de sauvegarde"], correct: 1, multiple: false, level: 'moyen' },
-      
-      // Niveau intermédiaire (bleu)
-      { question: "Quelle étape n'est pas nécessaire pour la création d'une machine virtuelle vulnérable ?", answers: ["Utiliser un ISO d'installation approprié", "Configurer un pare-feu", "Désactiver les mises à jour automatiques", "Installer un système d'exploitation vulnérable"], correct: 1, multiple: false, level: 'intermédiaire' },
-            { question: "Quelle est l'importance de désactiver les mises à jour automatiques ?", answers: ["Maintenir la machine vulnérable", "Optimiser les performances", "Améliorer la sécurité", "Gérer les utilisateurs"], correct: 0, multiple: false, level: 'intermédiaire' },
-      { question: "Comment identifier les vulnérabilités critiques ?", answers: ["En configurant un pare-feu", "En analysant les résultats du scan", "En redémarrant la machine", "En changeant le mot de passe administrateur"], correct: 1, multiple: false, level: 'intermédiaire' },
-      { question: "Quel est le rôle d'un exploit dans une analyse de vulnérabilités ?", answers: ["Corriger une vulnérabilité", "Exploiter une vulnérabilité", "Bloquer les attaques", "Surveiller le trafic réseau"], correct: 1, multiple: false, level: 'intermédiaire' },
-      { question: "Pourquoi est-il important d'appliquer des mesures de protection après l'exploitation ?", answers: ["Pour améliorer les performances", "Pour empêcher ou atténuer l'exploitation future", "Pour configurer le réseau", "Pour installer des mises à jour"], correct: 1, multiple: false, level: 'intermédiaire' },
-      { question: "Quels sont les objectifs principaux des mesures de protection ?", answers: ["Identifier, exploiter, protéger", "Surveiller, analyser, optimiser", "Empêcher, atténuer, corriger", "Configurer, redémarrer, sauvegarder"], correct: 2, multiple: false, level: 'intermédiaire' },
-      { question: "Quelle est la dernière étape de l'analyse des vulnérabilités ?", answers: ["Rédiger un rapport détaillé", "Installer un antivirus", "Redémarrer la machine virtuelle", "Modifier les paramètres de sécurité"], correct: 0, multiple: false, level: 'intermédiaire' },
-      
-      // Niveau difficile (rouge)
-      { question: "Quel type de vulnérabilité est le plus critique dans une machine virtuelle non mise à jour ?", answers: ["Vulnérabilités de sécurité", "Vulnérabilités de performance", "Vulnérabilités réseau", "Vulnérabilités matérielles"], correct: 0, multiple: false, level: 'difficile' },
-      { question: "Quel est l'impact potentiel de l'exploitation d'une vulnérabilité critique ?", answers: ["Accès non autorisé", "Amélioration des performances", "Optimisation du réseau", "Génération de rapports"], correct: 0, multiple: false, level: 'difficile' },
-      { question: "Quelle est la première mesure de protection recommandée après l'exploitation d'une vulnérabilité ?", answers: ["Appliquer les correctifs de sécurité", "Changer le mot de passe administrateur", "Configurer un pare-feu", "Installer un antivirus"], correct: 0, multiple: false, level: 'difficile' },
-      { question: "Quels sont les avantages de l'analyse des vulnérabilités ?", answers: ["Identification des points faibles", "Amélioration des performances système", "Optimisation de la consommation énergétique", "Surveillance du trafic réseau"], correct: 0, multiple: false, level: 'difficile' },
-      { question: "Quels outils peuvent être utilisés pour exploiter les vulnérabilités ?", answers: ["Metasploit, Armitage", "Wireshark, TCPDump", "Nessus, OpenVAS", "VirtualBox, VMware"], correct: 0, multiple: false, level: 'difficile' },
-      { question: "Quelle étape est nécessaire avant de rédiger le rapport d'analyse ?", answers: ["Vérifier les paramètres de sécurité", "Réexécuter le scan de vulnérabilités", "Documenter les exploits utilisés", "Analyser les résultats de l'exploitation"], correct: 3, multiple: false, level: 'difficile' },
-      { question: "Quelle technique est souvent utilisée pour exploiter une vulnérabilité réseau ?", answers: ["Sniffing", "Spoofing", "Injection SQL", "Déni de service"], correct: 0, multiple: false, level: 'difficile' },
-      { question: "Quelle est une bonne pratique pour sécuriser une machine après exploitation ?", answers: ["Appliquer les correctifs de sécurité", "Désactiver les mises à jour", "Redémarrer la machine", "Modifier l'interface utilisateur"], correct: 0, multiple: false, level: 'difficile' },
-      { question: "Quel est le principal objectif de l'analyse des vulnérabilités ?", answers: ["Identifier et corriger les points faibles de sécurité", "Optimiser les performances du système", "Gérer les utilisateurs", "Surveiller le trafic réseau"], correct: 0, multiple: false, level: 'difficile' }
-    ];
+  { question: "Quel est le rôle principal d'un scan de vulnérabilités ?", answers: ["Identifier les logiciels installés", "Détecter les vulnérabilités connues", "Supprimer les malwares", "Mettre à jour le système"], correct: 1, multiple: false },
+  { question: "Quel outil est utilisé pour scanner les vulnérabilités ?", answers: ["Nessus", "Adobe Reader", "Photoshop", "VLC"], correct: 0, multiple: false },
+  { question: "Pourquoi désactiver les mises à jour automatiques dans ce contexte ?", answers: ["Pour économiser la bande passante", "Pour maintenir le système vulnérable", "Pour éviter les bugs", "Pour protéger les données"], correct: 1, multiple: false },
+  { question: "Quelle étape suit l'analyse des résultats d'un scan de vulnérabilités ?", answers: ["Installation d'un antivirus", "Sélection d'une vulnérabilité critique", "Configuration du pare-feu", "Mise à jour du système"], correct: 1, multiple: false },
+  { question: "Quel est un exemple de système d'exploitation vulnérable ?", answers: ["Windows XP", "Ubuntu 22.04", "Windows 11", "macOS Ventura"], correct: 0, multiple: false },
+  { question: "Que permet un exploit ?", answers: ["Corriger une vulnérabilité", "Exploiter une vulnérabilité", "Bloquer les cyberattaques", "Améliorer les performances système"], correct: 1, multiple: false },
+  { question: "Quel site est utilisé pour rechercher des exploits ?", answers: ["Exploit Database", "Google Docs", "Wikipedia", "Stack Overflow"], correct: 0, multiple: false },
+  { question: "Quelle mesure est essentielle après avoir corrigé une vulnérabilité ?", answers: ["Réinstaller l'OS", "Reconfigurer le BIOS", "Réexécuter un scan de vulnérabilités", "Fermer la machine virtuelle"], correct: 2, multiple: false },
+  { question: "Quelle est la première étape d'une analyse de vulnérabilités ?", answers: ["Créer un rapport", "Scanner la machine", "Installer un système vulnérable", "Appliquer les correctifs"], correct: 2, multiple: false },
+  { question: "Quel outil est utilisé pour configurer un pare-feu ?", answers: ["Nessus", "Wireshark", "Windows Defender Firewall", "OpenVAS"], correct: 2, multiple: false },
+  { question: "Quel type de vulnérabilité critique doit être priorisé ?", answers: ["Faible", "Modérée", "Critique", "Insignifiante"], correct: 2, multiple: false },
+  { question: "Quelle est la finalité d'un rapport d'analyse de vulnérabilités ?", answers: ["Mettre à jour le système", "Fournir des recommandations de sécurité", "Réinitialiser la machine virtuelle", "Tester les correctifs"], correct: 1, multiple: false },
+  { question: "Quelle est une conséquence possible d'une exploitation de vulnérabilité ?", answers: ["Augmentation de la vitesse système", "Accès non autorisé aux données", "Suppression automatique de l'exploit", "Amélioration des performances réseau"], correct: 1, multiple: false },
+  { question: "Pourquoi utiliser un antivirus sur une machine virtuelle vulnérable ?", answers: ["Pour supprimer les fichiers inutiles", "Pour protéger contre les exploits", "Pour empêcher l'installation d'applications", "Pour améliorer la vitesse de démarrage"], correct: 1, multiple: false },
+  { question: "Quel est l'objectif principal de l'exploitation d'une vulnérabilité dans ce scénario ?", answers: ["Accéder au système cible", "Améliorer la sécurité", "Économiser de l'énergie", "Installer des logiciels"], correct: 0, multiple: false },
+  { question: "Que signifie le terme 'exploit' ?", answers: ["Un logiciel de protection", "Un programme utilisé pour exploiter une vulnérabilité", "Une méthode pour réparer une faille", "Un scanner réseau"], correct: 1, multiple: false },
+  { question: "Quelle est une méthode efficace pour prévenir les vulnérabilités ?", answers: ["Désactiver les correctifs", "Installer les mises à jour de sécurité", "Supprimer les logiciels antivirus", "Ignorer les alertes de sécurité"], correct: 1, multiple: false },
+  { question: "Quelle action suit la sélection d'une vulnérabilité critique ?", answers: ["Corriger la faille immédiatement", "Rechercher un exploit", "Éteindre la machine virtuelle", "Reconfigurer le pare-feu"], correct: 1, multiple: false },
+  { question: "Quel est un exemple d'outil pour identifier les vulnérabilités ?", answers: ["Nmap", "Nessus", "VMware", "Firefox"], correct: 1, multiple: false },
+  { question: "Que faire après avoir corrigé une vulnérabilité ?", answers: ["Ignorer la vulnérabilité", "Scanner à nouveau le système", "Supprimer l'antivirus", "Redémarrer sans tester"], correct: 1, multiple: false },
+  { question: "Que représente le score CVSS dans une analyse de vulnérabilités ?", answers: ["La gravité d'une vulnérabilité", "La vitesse de l'attaque", "Le nombre d'exploits disponibles", "La taille de la machine virtuelle"], correct: 0, multiple: false },
+  { question: "Pourquoi utiliser VirtualBox pour ce type de projet ?", answers: ["Pour accéder à Internet", "Pour créer un environnement isolé", "Pour désactiver les mises à jour", "Pour améliorer la vitesse réseau"], correct: 1, multiple: false },
+  { question: "Comment sécuriser efficacement une machine virtuelle ?", answers: ["Appliquer des correctifs de sécurité", "Ignorer les alertes de sécurité", "Désactiver le pare-feu", "Désinstaller les logiciels"], correct: 0, multiple: false },
+  { question: "Que peut détecter un scanner de vulnérabilités ?", answers: ["Des problèmes matériels", "Des failles de sécurité connues", "Des erreurs d'interface utilisateur", "Des fichiers temporaires inutiles"], correct: 1, multiple: false },
+  { question: "Pourquoi est-il important d'identifier les failles critiques ?", answers: ["Pour ignorer les vulnérabilités mineures", "Pour prioriser les correctifs", "Pour supprimer les logiciels antivirus", "Pour économiser les ressources système"], correct: 1, multiple: false },
+  { question: "Quel est un exemple de mesure préventive efficace ?", answers: ["Installer un logiciel antivirus", "Désactiver les pare-feux", "Ignorer les mises à jour", "Supprimer les alertes de sécurité"], correct: 0, multiple: false },
+  { question: "Quel est le rôle principal d'un rapport d'analyse ?", answers: ["Améliorer l'interface utilisateur", "Documenter les vulnérabilités et recommandations", "Créer des failles de sécurité", "Mettre à jour automatiquement le système"], correct: 1, multiple: false },
+  { question: "Quelle action est nécessaire après une exploitation réussie ?", answers: ["Configurer un pare-feu", "Désactiver les correctifs", "Supprimer la machine virtuelle", "Désinstaller l'antivirus"], correct: 0, multiple: false },
+  { question: "Quel est l'objectif principal d'un test de vulnérabilité ?", answers: ["Évaluer la sécurité du système", "Améliorer la vitesse du réseau", "Créer des vulnérabilités", "Tester des fonctionnalités inutiles"], correct: 0, multiple: false },
+  { question: "Pourquoi utiliser Nessus dans ce projet ?", answers: ["Pour désactiver les alertes de sécurité", "Pour scanner et identifier les vulnérabilités", "Pour configurer des pare-feux", "Pour installer des correctifs automatiquement"], correct: 1, multiple: false },
+  { question: "Que signifie 'mise en situation' dans ce contexte ?", answers: ["Simuler un scénario réel", "Installer un logiciel antivirus", "Rechercher des exploits", "Supprimer des failles de sécurité"], correct: 0, multiple: false },
+  { question: "Quel est un résultat possible d'une exploitation ?", answers: ["Amélioration des performances système", "Accès non autorisé à des données", "Augmentation de la mémoire RAM", "Supprimer les vulnérabilités"], correct: 1, multiple: false },
+  { question: "Pourquoi appliquer des correctifs de sécurité ?", answers: ["Pour ignorer les failles", "Pour empêcher les attaques futures", "Pour améliorer l'interface utilisateur", "Pour désactiver les alertes"], correct: 1, multiple: false },
+  { question: "Quel outil peut être utilisé pour tester les protections appliquées ?", answers: ["Nessus", "PowerPoint", "Word", "Excel"], correct: 0, multiple: false },
+  { question: "Pourquoi est-il utile d'utiliser une machine virtuelle pour ce projet ?", answers: ["Pour simuler des scénarios réels dans un environnement sécurisé", "Pour tester les performances du système", "Pour supprimer les logiciels inutiles", "Pour améliorer les graphismes"], correct: 0, multiple: false },
+  { question: "Quel est un avantage des rapports d'analyse de vulnérabilités ?", answers: ["Documenter les failles et solutions", "Désactiver les mises à jour", "Améliorer l'esthétique du système", "Créer des vulnérabilités"], correct: 0, multiple: false },
+  { question: "Quel est l'objectif principal d'une analyse des vulnérabilités ?", answers: ["Améliorer l'ergonomie", "Identifier et corriger les failles", "Augmenter la vitesse réseau", "Désactiver les correctifs"], correct: 1, multiple: false },
+  { question: "Que permet un scanner de vulnérabilités comme Nessus ?", answers: ["Créer des exploits", "Identifier des vulnérabilités connues", "Améliorer les graphismes", "Supprimer les fichiers temporaires"], correct: 1, multiple: false }
+];
     
     let currentQuestionIndex = 0;
     let timerInterval;
@@ -181,15 +181,6 @@
       questionEl.classList.add('question');
       questionEl.textContent = questionData.question;
       questionContainer.appendChild(questionEl);
-
-      // Colorer la barre selon le niveau de difficulté
-      const levelColors = {
-        facile: 'green',
-        moyen: 'orange',
-        intermédiaire: 'blue',
-        difficile: 'red'
-      };
-      document.querySelector('.question-number').style.borderBottomColor = levelColors[questionData.level];
 
       questionData.answers.forEach((answer, index) => {
         const choiceEl = document.createElement('li');
@@ -262,19 +253,182 @@
     }
 
     function startTimer() {
-      const timerEl = document.getElementById('timer');
-      timerEl.style.width = '100%';
-      timerEl.style.transition = 'none';
-      setTimeout(() => {
-        timerEl.style.transition = 'width 20s linear';
+    const timerEl = document.getElementById('timer');
+    const skipButton = document.getElementById('skip-button');
+    skipButton.style.display = 'none'; // Masque le bouton au début
+
+    timerEl.style.width = '100%';
+    timerEl.style.transition = 'none';
+
+    setTimeout(() => {
+        timerEl.style.transition = 'width 20s linear'; // Durée totale 20 secondes
         timerEl.style.width = '0%';
-      }, 50);
-      timerInterval = setTimeout(() => {
+    }, 50);
+
+    // Afficher le bouton après 10 secondes
+    setTimeout(() => {
+        skipButton.style.display = 'block';
+    }, 10000); // Temps pour afficher le bouton (10 secondes)
+
+    // Déclenche la fin de la question après 20 secondes
+    timerInterval = setTimeout(() => {
         handleAnswer();
-      }, 20000);
+    }, 20000);
+
+    // Gérer le clic sur le bouton "Passer"
+    skipButton.onclick = () => {
+        clearInterval(timerInterval); // Annule le timer si le bouton est cliqué
+        skipButton.style.display = 'none'; // Cache le bouton
+        handleAnswer(); // Passe à la question suivante
+    };
+}
+  showQuestion();
+  </script>
+  <script>
+  // Mélange un tableau (fonction utilitaire)
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  // Mélange les questions et leurs réponses
+  shuffleArray(questions);
+  questions.forEach(question => {
+    const correctAnswer = question.answers[question.correct];
+    shuffleArray(question.answers);
+    question.correct = question.answers.indexOf(correctAnswer);
+  });
+
+  let currentQuestionIndex = 0;
+  let timerInterval;
+  let selectedAnswers = [];
+
+  function showQuestion() {
+    if (currentQuestionIndex >= questions.length) {
+      alert("QCM terminé !");
+      return;
     }
 
-    showQuestion();
-  </script>
+    selectedAnswers = [];
+    const questionContainer = document.getElementById('question-container');
+    const questionNumberEl = document.getElementById('question-number');
+    const responseInfoEl = document.getElementById('response-info');
+    const choicesEl = document.getElementById('choices');
+    questionContainer.innerHTML = '';
+    choicesEl.innerHTML = '';
+
+    const questionData = questions[currentQuestionIndex];
+
+    questionNumberEl.textContent = `Question numéro ${currentQuestionIndex + 1}`;
+    responseInfoEl.textContent = questionData.multiple ? `Plusieurs réponses possibles (${questionData.correct.length} attendues)` : 'Une seule réponse possible';
+
+    const questionEl = document.createElement('div');
+    questionEl.classList.add('question');
+    questionEl.textContent = questionData.question;
+    questionContainer.appendChild(questionEl);
+
+    questionData.answers.forEach((answer, index) => {
+      const choiceEl = document.createElement('li');
+      const buttonEl = document.createElement('button');
+      buttonEl.textContent = answer;
+      buttonEl.onclick = () => selectAnswer(index, buttonEl, questionData.multiple, questionData.correct.length);
+      choiceEl.appendChild(buttonEl);
+      choicesEl.appendChild(choiceEl);
+    });
+
+    startTimer();
+  }
+
+  function selectAnswer(index, buttonEl, multiple, correctLength) {
+    if (multiple) {
+      if (selectedAnswers.includes(index)) {
+        selectedAnswers = selectedAnswers.filter(i => i !== index);
+        buttonEl.classList.remove('selected');
+      } else if (selectedAnswers.length < correctLength) {
+        selectedAnswers.push(index);
+        buttonEl.classList.add('selected');
+      } else {
+        const firstSelected = selectedAnswers.shift();
+        const firstSelectedButton = document.querySelectorAll('.choices button')[firstSelected];
+        firstSelectedButton.classList.remove('selected');
+        selectedAnswers.push(index);
+        buttonEl.classList.add('selected');
+      }
+    } else {
+      selectedAnswers = [index];
+      const choices = document.querySelectorAll('.choices button');
+      choices.forEach(button => button.classList.remove('selected'));
+      buttonEl.classList.add('selected');
+    }
+  }
+
+  function handleAnswer() {
+    clearInterval(timerInterval);
+    const questionData = questions[currentQuestionIndex];
+    const selectedButtons = document.querySelectorAll('.choices button.selected');
+
+    if (questionData.multiple) {
+      selectedButtons.forEach(button => {
+        const selectedAnswer = Array.from(button.parentNode.parentNode.children).indexOf(button.parentNode);
+        if (questionData.correct.includes(selectedAnswer)) {
+          button.classList.add('correct');
+        } else {
+          button.classList.add('incorrect');
+        }
+      });
+      questionData.correct.forEach(correctIndex => {
+        const correctButton = document.querySelector(`.choices li:nth-child(${correctIndex + 1}) button`);
+        correctButton.classList.add('correct');
+      });
+    } else {
+      const selectedAnswer = Array.from(selectedButtons[0].parentNode.parentNode.children).indexOf(selectedButtons[0].parentNode);
+      if (selectedAnswer === questionData.correct) {
+        selectedButtons[0].classList.add('correct');
+      } else {
+        selectedButtons[0].classList.add('incorrect');
+        const correctButton = document.querySelector(`.choices li:nth-child(${questionData.correct + 1}) button`);
+        correctButton.classList.add('correct');
+      }
+    }
+
+    setTimeout(() => {
+      currentQuestionIndex++;
+      showQuestion();
+    }, 2000);
+  }
+
+  function startTimer() {
+    const timerEl = document.getElementById('timer');
+    const skipButton = document.getElementById('skip-button');
+    skipButton.style.display = 'none';
+
+    timerEl.style.width = '100%';
+    timerEl.style.transition = 'none';
+
+    setTimeout(() => {
+      timerEl.style.transition = 'width 20s linear';
+      timerEl.style.width = '0%';
+    }, 50);
+
+    setTimeout(() => {
+      skipButton.style.display = 'block';
+    }, 10000);
+
+    timerInterval = setTimeout(() => {
+      handleAnswer();
+    }, 20000);
+
+    skipButton.onclick = () => {
+      clearInterval(timerInterval);
+      skipButton.style.display = 'none';
+      handleAnswer();
+    };
+  }
+
+  showQuestion();
+</script>
+
 </body>
 </html>
