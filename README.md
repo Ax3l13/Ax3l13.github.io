@@ -256,13 +256,14 @@ function startTimer() {
     timerEl.style.width = '100%';
     timerEl.style.transition = 'none';
     setTimeout(() => {
-      timerEl.style.transition = 'width 30s linear'; // Augmentez ici la durée à 30s
-      timerEl.style.width = '0%';
+        timerEl.style.transition = 'width 20s linear'; // Passé à 20s
+        timerEl.style.width = '0%';
     }, 50);
     timerInterval = setTimeout(() => {
-      handleAnswer();
-    }, 30000); // Ajustez également le délai pour correspondre à 30s
-  }
+        handleAnswer();
+    }, 20000); // Passé à 20000ms (20s)
+}
+
 
   showQuestion();
   </script>
