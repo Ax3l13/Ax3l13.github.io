@@ -115,7 +115,7 @@
       transform: translateY(-50%);
       display: flex;
       flex-wrap: wrap;
-      width: 120px; /* Ajusté pour une largeur plus appropriée */
+      width: 80%; /* Ajusté pour une largeur plus appropriée */
     }
     #score-container {
       display: none;
