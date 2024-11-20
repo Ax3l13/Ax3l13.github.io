@@ -193,35 +193,7 @@
         choicesEl.appendChild(choiceEl);
       });
       
-      function startTimer() {
-    const timerEl = document.getElementById('timer');
-    const skipButton = document.getElementById('skip-button');
-    skipButton.style.display = 'none'; // Masque le bouton au début
-
-    timerEl.style.width = '100%';
-    timerEl.style.transition = 'none';
-
-    setTimeout(() => {
-        timerEl.style.transition = 'width 20s linear'; // Durée totale 20 secondes
-        timerEl.style.width = '0%';
-    }, 50);
-
-    // Afficher le bouton après 10 secondes
-    setTimeout(() => {
-        skipButton.style.display = 'block';
-    }, 10000); // Temps pour afficher le bouton (10 secondes)
-
-    // Déclenche la fin de la question après 20 secondes
-    timerInterval = setTimeout(() => {
-        handleAnswer();
-    }, 20000);
-
-    // Gérer le clic sur le bouton "Passer"
-    skipButton.onclick = () => {
-        clearInterval(timerInterval); // Annule le timer si le bouton est cliqué
-        skipButton.style.display = 'none'; // Cache le bouton
-        handleAnswer(); // Passe à la question suivante
-    };
+      function startTimer()
 }
 
 
@@ -283,18 +255,35 @@
       }, 2000);
     }
 
-    function startTimer() {
-      const timerEl = document.getElementById('timer');
-      timerEl.style.width = '100%';
-      timerEl.style.transition = 'none';
-      setTimeout(() => {
-        timerEl.style.transition = 'width 10s linear';
+    function startTimer()  {
+    const timerEl = document.getElementById('timer');
+    const skipButton = document.getElementById('skip-button');
+    skipButton.style.display = 'none'; // Masque le bouton au début
+
+    timerEl.style.width = '100%';
+    timerEl.style.transition = 'none';
+
+    setTimeout(() => {
+        timerEl.style.transition = 'width 20s linear'; // Durée totale 20 secondes
         timerEl.style.width = '0%';
-      }, 50);
-      timerInterval = setTimeout(() => {
+    }, 50);
+
+    // Afficher le bouton après 10 secondes
+    setTimeout(() => {
+        skipButton.style.display = 'block';
+    }, 10000); // Temps pour afficher le bouton (10 secondes)
+
+    // Déclenche la fin de la question après 20 secondes
+    timerInterval = setTimeout(() => {
         handleAnswer();
-      }, 10000);
-    }
+    }, 20000);
+
+    // Gérer le clic sur le bouton "Passer"
+    skipButton.onclick = () => {
+        clearInterval(timerInterval); // Annule le timer si le bouton est cliqué
+        skipButton.style.display = 'none'; // Cache le bouton
+        handleAnswer(); // Passe à la question suivante
+    };
 
     showQuestion();
   </script>
