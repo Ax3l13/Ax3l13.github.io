@@ -152,7 +152,8 @@ const questions = [
   { question: "Quel est un avantage des rapports d'analyse de vulnérabilités ?", answers: ["Documenter les failles et solutions", "Désactiver les mises à jour", "Améliorer l'esthétique du système", "Créer des vulnérabilités"], correct: 0, multiple: false },
   { question: "Quel est l'objectif principal d'une analyse des vulnérabilités ?", answers: ["Améliorer l'ergonomie", "Identifier et corriger les failles", "Augmenter la vitesse réseau", "Désactiver les correctifs"], correct: 1, multiple: false },
   { question: "Que permet un scanner de vulnérabilités comme Nessus ?", answers: ["Créer des exploits", "Identifier des vulnérabilités connues", "Améliorer les graphismes", "Supprimer les fichiers temporaires"], correct: 1, multiple: false }
-    ];
+    ]
+  ];
     
     let currentQuestionIndex = 0;
     let timerInterval;
