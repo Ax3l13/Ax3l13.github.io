@@ -149,7 +149,9 @@ const questions = [
   { question: "Pourquoi appliquer des correctifs de sécurité ?", answers: ["Pour ignorer les failles", "Pour empêcher les attaques futures", "Pour améliorer l'interface utilisateur", "Pour désactiver les alertes"], correct: 1, multiple: false },
   { question: "Quel outil peut être utilisé pour tester les protections appliquées ?", answers: ["Nessus", "PowerPoint", "Word", "Excel"], correct: 0, multiple: false },
   { question: "Pourquoi est-il utile d'utiliser une machine virtuelle pour ce projet ?", answers: ["Pour simuler des scénarios réels dans un environnement sécurisé", "Pour tester les performances du système", "Pour supprimer les logiciels inutiles", "Pour améliorer les graphismes"], correct: 0, multiple: false },
-
+  { question: "Quel est un avantage des rapports d'analyse de vulnérabilités ?", answers: ["Documenter les failles et solutions", "Désactiver les mises à jour", "Améliorer l'esthétique du système", "Créer des vulnérabilités"], correct: 0, multiple: false },
+  { question: "Quel est l'objectif principal d'une analyse des vulnérabilités ?", answers: ["Améliorer l'ergonomie", "Identifier et corriger les failles", "Augmenter la vitesse réseau", "Désactiver les correctifs"], correct: 1, multiple: false },
+  { question: "Que permet un scanner de vulnérabilités comme Nessus ?", answers: ["Créer des exploits", "Identifier des vulnérabilités connues", "Améliorer les graphismes", "Supprimer les fichiers temporaires"], correct: 1, multiple: false }
     ];
     
     let currentQuestionIndex = 0;
