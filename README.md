@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -33,7 +32,7 @@
       font-size: 24px;
       margin-bottom: 10px;
       text-align: center;
-      border-bottom: 2px solid;
+      border-bottom: 2px solid #007bff;
       padding-bottom: 10px;
     }
     .question {
@@ -92,6 +91,10 @@
       text-align: right;
       margin-top: 10px;
       font-size: 14px;
+    }
+    /* Style pour masquer le titre h1 avec le lien */
+    h1 a[href="https://ax3l13.github.io/"] {
+      display: none;
     }
   </style>
 </head>
