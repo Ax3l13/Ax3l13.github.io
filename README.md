@@ -44,15 +44,18 @@
       list-style: none;
       padding: 0;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-wrap: wrap;
       position: relative;
       margin-top: 50px;
       width: 80%;
     }
     .choices li {
-      width: 48%; /* 2 items per row */
+      width: 35%;
       margin: 10px 0;
+    }
+    .choices li:nth-child(odd) {
+      margin-right: 10%;
     }
     .choices li button {
       background-color: #007bff;
@@ -111,22 +114,15 @@
       top: 50%;
       transform: translateY(-50%);
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      width: 120px; /* Ajusté pour une largeur plus appropriée */
     }
     #score-container {
       display: none;
       margin-top: 20px;
     }
-    #end-page {
-      display: none;
-      margin-top: 50px;
-      font-size: 24px;
-      text-align: center;
-    }
-    button[disabled] {
-      background-color: #ccc;
-      cursor: not-allowed;
+    .button-container {
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -138,15 +134,13 @@
     <div class="timer" id="timer"></div>
   </div>
   <ul class="choices" id="choices"></ul>
-  <button id="skip-button">Passer</button>
-  <button id="quit-button">Quitter</button>
+  <div class="button-container">
+    <button id="skip-button">Passer</button>
+    <button id="quit-button" style="display:none;">Quitter</button>
+  </div>
 
   <div id="question-squares"></div>
   <div id="score-container">Score: <span id="score">0</span></div>
-  
-  <div id="end-page">
-    <p>Votre score : <span id="final-score"></span>/40</p>
-  </div>
 
   <script>
     const questions = [
@@ -174,7 +168,8 @@
       for (let i = 0; i < 40; i++) {
         const square = document.createElement('div');
         square.classList.add('question-square');
-        square.onclick = () => {}; // Désactive le clic pendant le quiz
+        // Désactive l'interaction sur les carrés pendant le quiz
+        square.style.pointerEvents = 'none';
         questionSquaresContainer.appendChild(square);
       }
     }
@@ -188,7 +183,7 @@
     // Affichage de la question actuelle
     function showQuestion() {
       if (currentQuestionIndex >= questions.length) {
-        showEndPage();
+        showFinalPage();
         return;
       }
 
@@ -218,11 +213,6 @@
         choiceEl.appendChild(buttonEl);
         choicesEl.appendChild(choiceEl);
       });
-
-      // Préréselectionner la 1ère réponse
-      const firstChoice = document.querySelector('.choices button');
-      firstChoice.classList.add('selected');
-      selectedAnswers = [0];
 
       startTimer();
     }
@@ -257,55 +247,44 @@
       setTimeout(() => {
         currentQuestionIndex++;
         showQuestion();
-      }, 1000);
-    }
-
-    function skipQuestion() {
-      currentQuestionIndex++;
-      showQuestion();
-    }
-
-    function quitQuiz() {
-      showEndPage();
-    }
-
-    function showEndPage() {
-      document.getElementById('end-page').style.display = 'block';
-      document.getElementById('final-score').textContent = `${score}/40`;
-      document.getElementById('qcm-container').style.display = 'none';
-      document.getElementById('question-squares').style.display = 'none';
-      document.getElementById('score-container').style.display = 'none';
+      }, 2000);
     }
 
     function startTimer() {
-      let timeLeft = 30;
       const timerEl = document.getElementById('timer');
+      const skipButton = document.getElementById('skip-button');
+      skipButton.style.display = 'none'; // Masque le bouton "Passer"
+
       timerEl.style.width = '100%';
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        const width = (timeLeft / 30) * 100;
-        timerEl.style.width = `${width}%`;
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          handleAnswer();
-        }
-      }, 1000);
+      timerEl.style.transition = 'width 30s linear';
+      setTimeout(() => handleAnswer(), 30000); // Temps pour répondre à chaque question
     }
 
-    // Fonction de mélange des éléments dans un tableau
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
+    function showFinalPage() {
+      const scoreContainer = document.getElementById('score-container');
+      const scoreEl = document.getElementById('score');
+      scoreEl.textContent = score;
+      scoreContainer.style.display = 'block';
+
+      const questionSquaresContainer = document.getElementById('question-squares');
+      questionSquaresContainer.style.display = 'none';
+
+      const qcmContainer = document.getElementById('qcm-container');
+      qcmContainer.innerHTML = "<h2>Votre score : " + score + " / 40</h2>";
+
+      const quitButton = document.getElementById('quit-button');
+      quitButton.style.display = 'none';  // Masquer le bouton Quitter
     }
 
-    // Initialisation
+    document.getElementById('skip-button').onclick = () => {
+      currentQuestionIndex++;
+      showQuestion();
+    };
+
+    document.getElementById('quit-button').onclick = showFinalPage;
+
     createQuestionSquares();
     showQuestion();
-
-    document.getElementById('skip-button').onclick = skipQuestion;
-    document.getElementById('quit-button').onclick = quitQuiz;
   </script>
 </body>
 </html>
