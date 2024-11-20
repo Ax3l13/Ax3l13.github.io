@@ -98,8 +98,9 @@
       height: 20px;
       background-color: #ddd;
       margin: 5px;
-      display: inline-block;
+      display: block;
       border-radius: 4px;
+      cursor: pointer;
     }
     .question-square.correct {
       background-color: green;
@@ -112,6 +113,13 @@
       left: 10px;
       top: 50%;
       transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #score-container {
+      display: none;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -154,6 +162,7 @@
       for (let i = 0; i < 40; i++) {
         const square = document.createElement('div');
         square.classList.add('question-square');
+        square.onclick = () => goToQuestion(i); // Lien vers la question
         questionSquaresContainer.appendChild(square);
       }
     }
@@ -258,6 +267,11 @@
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
       }
+    }
+
+    function goToQuestion(index) {
+      currentQuestionIndex = index;
+      showQuestion();
     }
 
     createQuestionSquares();
