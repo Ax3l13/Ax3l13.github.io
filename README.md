@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -23,8 +23,8 @@
       padding: 40px 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;  /* Utilise toute la largeur de la page */
-      max-width: 1200px;  /* Limite la largeur pour une meilleure lisibilité */
+      width: 100%;
+      max-width: 1200px;
       text-align: center;
       position: relative;
       margin-bottom: 20px;
@@ -93,8 +93,8 @@
       margin-top: 10px;
       font-size: 14px;
     }
-    /* Cacher l'élément de nom d'utilisateur si présent */
-    .header {
+    /* Style pour masquer le titre h1 avec le lien */
+    h1 a[href="https://ax3l13.github.io/"] {
       display: none;
     }
   </style>
