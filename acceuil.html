@@ -1,165 +1,265 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QCM Interactif</title>
+  <style>
     body {
-        background-color: #141414;
-        color: white;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    header {
-        width: 100%;
-        background-color: #222;
-        padding: 10px;
-        text-align: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      padding-top: 50px;
     }
     .container {
-        margin-top: 70px; /* Espace pour le header */
-        padding: 20px;
+      background-color: white;
+      padding: 40px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      height: auto;
+      text-align: center;
+      position: relative;
+      margin-bottom: 20px;
     }
-    .category {
-        margin-bottom: 40px;
+    .question-number {
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: center;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 10px;
     }
-    .category h2 {
-        margin-bottom: 10px;
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
     }
-    .film-container {
-        display: flex;
-        overflow-x: auto;
+    .choices {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      position: relative;
+      margin-top: 50px;
+      width: 80%;
     }
-    .film {
-        background-color: #333;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 5px;
-        flex: 0 0 auto;
-        width: 200px;
-        height: 300px; /* Hauteur initiale */
-        text-align: center;
-        position: relative;
-        transition: height 0.3s;
-        overflow: hidden; /* Masque le contenu débordant */
+    .choices li {
+      width: 35%;
+      margin: 10px 0;
     }
-    .film img {
-        width: 100%;
-        border-radius: 5px;
+    .choices li:nth-child(odd) {
+      margin-right: 10%;
     }
-    .film-title {
-        position: absolute;
-        bottom: -90px; /* Position initiale en dehors de la vue pour les titres plus longs */
-        left: 0;
-        width: 100%;
-        background-color: #333; /* Correspondance avec le fond de .film */
-        color: white; /* Couleur du texte */
-        font-size: 1.2em; /* Augmente la taille du texte */
-        padding: 5px 0; /* Réduit l'espace vertical */
-        font-family: "Comic Sans MS", "Comic Sans", cursive; /* Police arrondie */
-        transition: bottom 0.3s; /* Transition douce pour l'apparition du titre */
+    .choices li button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
     }
-    .film:hover .film-title {
-        bottom: 0; /* Fait remonter le titre à la vue */
+    .choices li button.selected {
+      background-color: #0056b3;
     }
-    .film:hover {
-        height: 360px; /* Augmente la hauteur au survol */
-        cursor: pointer; /* Change le curseur en main au survol */
+    .choices li button.correct {
+      background-color: green;
     }
-    .hidden {
-        display: none;
+    .choices li button.incorrect {
+      background-color: red;
     }
-</style>
+    .timer {
+      margin-top: 20px;
+      background-color: #007bff;
+      height: 10px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .response-info {
+      text-align: right;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .summary-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      height: auto;
+      text-align: left;
+      position: relative;
+      margin-top: 20px;
+      display: none;
+    }
+    .summary-container h2 {
+      text-align: center;
+    }
+    .summary-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
 </head>
 <body>
-    <iframe src="header.html" style="width: 100%; height: 60px; border: none;"></iframe>
-    <br>
-    <div class="container" id="movieCategories">
-        <!-- Categories will be loaded here -->
+  <div class="container" id="qcm-container">
+    <div id="question-number" class="question-number">Question numéro 1</div>
+    <div id="question-container" class="question-container">
+      <!-- La question apparaîtra ici -->
     </div>
-    <script src="database.js"></script>
-    <script>
-        // Catégories de films à afficher
-        const categories = [
-          'Recommandé pour ?/user/?', 'Action', 'Aventure', 'Animation', 'Biographie', 
-          'Comédie', 'Crime', 'Documentaire', 'Drame', 'Famille', 'Fantaisie', 
-          'Film Noir', 'Histoire', 'Horreur', 'Comédie Musicale', 'Mystère', 
-          'Romance', 'Science-Fiction', 'Court-métrage', 'Sport', 'Super-héros', 
-          'Thriller', 'Guerre', 'Western'
-        ];
+    <div id="response-info" class="response-info">Une seule réponse possible</div>
+    <div class="timer" id="timer"></div>
+  </div>
+  <ul class="choices" id="choices">
+    <!-- Les choix de réponse apparaîtront ici -->
+  </ul>
+  <div class="summary-container" id="summary-container">
+    <h2>Résultats du QCM</h2>
+    <div id="summary"></div>
+  </div>
+  
+  <script>
+    const questions = [
+      { question: "Comment créer un site web ?", answers: ["A", "B", "C", "D"], correct: 0, multiple: false },
+      { question: "Question facile 1?", answers: ["A", "B", "C", "D"], correct: [0, 1], multiple: true },
+      // Ajoutez d'autres questions ici...
+    ];
+    
+    let currentQuestionIndex = 0;
+    let timerInterval;
+    let selectedAnswers = [];
+    let userAnswers = [];
+    let score = 0;
 
-        // Mélange les éléments d'un tableau
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-// Charge les films par genre
-function loadMoviesByGenre(genre) {
-    if (genre.toLowerCase() === 'recommandé pour ?/user/?') {
-        const shuffledMovies = [...movieDatabase];
-        shuffle(shuffledMovies);
-        return shuffledMovies.slice(0, 20); // Prend 20 films aléatoires
-    } else {
-        const filteredMovies = movieDatabase.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
-        shuffle(filteredMovies);
-        return filteredMovies.slice(0, 20); // Prend 20 films aléatoires pour les autres genres
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
-}
 
-function loadMovies(category, movies) {
-    const container = document.createElement('div');
-    container.className = 'category';
-    container.innerHTML = `<h2>${category}</h2><div class="film-container" id="${category.toLowerCase()}"></div>`;
-    document.getElementById('movieCategories').appendChild(container);
-    const filmContainer = container.querySelector('.film-container');
-    movies.forEach(movie => {
-        const film = document.createElement('div');
-        film.className = 'film';
-        film.innerHTML = `
-            <img src="${movie.poster}" alt="${movie.title}">
-            <div class="film-title">${movie.title}</div>
-        `;
-        film.addEventListener("click", () => {
-            window.location.href = movie.pagedufilm;
+    function showQuestion() {
+      if (currentQuestionIndex >= questions.length) {
+        showSummary();
+        return;
+      }
+      
+      selectedAnswers = [];
+      const questionContainer = document.getElementById('question-container');
+      const questionNumberEl = document.getElementById('question-number');
+      const responseInfoEl = document.getElementById('response-info');
+      const choicesEl = document.getElementById('choices');
+      questionContainer.innerHTML = '';
+      choicesEl.innerHTML = '';
+      
+      const questionData = questions[currentQuestionIndex];
+      
+      questionNumberEl.textContent = `Question numéro ${currentQuestionIndex + 1}`;
+      responseInfoEl.textContent = questionData.multiple ? `Plusieurs réponses possibles (${questionData.correct.length} attendues)` : 'Une seule réponse possible';
+      
+      const questionEl = document.createElement('div');
+      questionEl.classList.add('question');
+      questionEl.textContent = questionData.question;
+      questionContainer.appendChild(questionEl);
+
+      const shuffledAnswers = shuffle([...questionData.answers]);
+      questionData.correct = shuffledAnswers.map((_, index) => questionData.answers.indexOf(shuffledAnswers[index]));
+
+      shuffledAnswers.forEach((answer, index) => {
+        const choiceEl = document.createElement('li');
+        const buttonEl = document.createElement('button');
+        buttonEl.textContent = answer;
+        buttonEl.onclick = () => selectAnswer(index, buttonEl, questionData.multiple, questionData.correct.length);
+        choiceEl.appendChild(buttonEl);
+        choicesEl.appendChild(choiceEl);
+      });
+      
+      startTimer();
+    }
+
+    function selectAnswer(index, buttonEl, multiple, correctLength) {
+      if (multiple) {
+        if (selectedAnswers.includes(index)) {
+          selectedAnswers = selectedAnswers.filter(i => i !== index);
+          buttonEl.classList.remove('selected');
+        } else if (selectedAnswers.length < correctLength) {
+          selectedAnswers.push(index);
+          buttonEl.classList.add('selected');
+        } else {
+          const firstSelected = selectedAnswers.shift();
+          const firstSelectedButton = document.querySelectorAll('.choices button')[firstSelected];
+          firstSelectedButton.classList.remove('selected');
+          selectedAnswers.push(index);
+          buttonEl.classList.add('selected');
+        }
+      } else {
+        selectedAnswers = [index];
+        const choices = document.querySelectorAll('.choices button');
+        choices.forEach(button => button.classList.remove('selected'));
+        buttonEl.classList.add('selected');
+      }
+    }
+
+    function handleAnswer() {
+      clearInterval(timerInterval);
+      const questionData = questions[currentQuestionIndex];
+      const selectedButtons = document.querySelectorAll('.choices button.selected');
+      let correct = true;
+      
+      if (questionData.multiple) {
+        selectedButtons.forEach(button => {
+          const selectedAnswer = Array.from(button.parentNode.parentNode.children).indexOf(button.parentNode);
+          if (questionData.correct.includes(selectedAnswer)) {
+            button.classList.add('correct');
+          } else {
+            button.classList.add('incorrect');
+            correct = false;
+          }
         });
-        filmContainer.appendChild(film);
-    });
-}
-
-    document.addEventListener('DOMContentLoaded', () => {
-        fetch('database.json')
-            .then(response => response.json())
-            .then(data => {
-                movieDatabase = data;
-                shuffle(categories);
-                categories.forEach(category => {
-                    const movies = loadMoviesByGenre(category);
-                    if (movies.length > 0) {
-                        loadMovies(category, movies);
-                    }
-                });
-            });
-    });
-
-
-        // Charge les catégories et les films aléatoires
-        document.addEventListener('DOMContentLoaded', () => {
-            shuffle(categories);
-            categories.forEach(category => {
-                const movies = loadMoviesByGenre(category);
-                if (movies.length > 0) {
-                    loadMovies(category, movies);
-                }
-            });
+        questionData.correct.forEach(correctIndex => {
+          const correctButton = document.querySelector(`.choices li:nth-child(${correctIndex + 1}) button`);
+          correctButton.classList.add('correct');
         });
-    </script>
-</body>
-</html>
+      } else {
+        const selectedAnswer = Array.from(selectedButtons[0].parentNode.parentNode.children).indexOf(selectedButtons[0].parentNode);
+        if (selectedAnswer === questionData.correct) {
+          selectedButtons[0].classList.add('correct');
+        } else {
+          selectedButtons[0].classList.add('incorrect');
+          const correctButton = document.querySelector(`.choices li:nth-child(${questionData.correct + 1}) button`);
+          correctButton.classList.add('correct');
+          correct = false;
+        }
+      }
+
+      userAnswers.push({
+        question: questionData.question,
+        correct: correct,
+        selectedAnswers: selectedAnswers.map(i => shuffledAnswers[i]),
+        correctAnswers: questionData.correct.map(i => shuffledAnswers[i])
+      });
+
+      if (correct) score++;
+
+      setTimeout(() => {
+        currentQuestionIndex++;
+        showQuestion();
+      }, 2000);
+    }
+
+    function startTimer() {
