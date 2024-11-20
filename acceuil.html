@@ -23,8 +23,8 @@
       padding: 40px 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      height: auto;
+      width: 100%;  /* Utilise toute la largeur de la page */
+      max-width: 1200px;  /* Limite la largeur pour une meilleure lisibilité */
       text-align: center;
       position: relative;
       margin-bottom: 20px;
@@ -92,6 +92,10 @@
       text-align: right;
       margin-top: 10px;
       font-size: 14px;
+    }
+    /* Cacher l'élément de nom d'utilisateur si présent */
+    .header {
+      display: none;
     }
   </style>
 </head>
