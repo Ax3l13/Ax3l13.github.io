@@ -251,20 +251,20 @@ const questions = [
       }, 2000);
     }
 
-    function startTimer() {
-      const timerEl = document.getElementById('timer');
-      timerEl.style.width = '100%';
-      timerEl.style.transition = 'none';
-      setTimeout(() => {
-        timerEl.style.transition = 'width 10s linear';
-        timerEl.style.width = '0%';
-      }, 50);
-      timerInterval = setTimeout(() => {
-        handleAnswer();
-      }, 10000);
-    }
+function startTimer() {
+    const timerEl = document.getElementById('timer');
+    timerEl.style.width = '100%';
+    timerEl.style.transition = 'none';
+    setTimeout(() => {
+      timerEl.style.transition = 'width 30s linear'; // Augmentez ici la durée à 30s
+      timerEl.style.width = '0%';
+    }, 50);
+    timerInterval = setTimeout(() => {
+      handleAnswer();
+    }, 30000); // Ajustez également le délai pour correspondre à 30s
+  }
 
-    showQuestion();
+  showQuestion();
   </script>
 </body>
 </html>
