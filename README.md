@@ -111,6 +111,7 @@
   <ul class="choices" id="choices">
     <!-- Les choix de réponse apparaîtront ici -->
   </ul>
+  <button id="skip-button">Passer</button>
   
   <script>
     const questions = [
@@ -254,18 +255,34 @@
 
     function startTimer() {
     const timerEl = document.getElementById('timer');
+    const skipButton = document.getElementById('skip-button');
+    skipButton.style.display = 'none'; // Masque le bouton au début
+
     timerEl.style.width = '100%';
     timerEl.style.transition = 'none';
+
     setTimeout(() => {
-        timerEl.style.transition = 'width 20s linear'; // Passé à 20s
+        timerEl.style.transition = 'width 20s linear'; // Durée totale 20 secondes
         timerEl.style.width = '0%';
     }, 50);
+
+    // Afficher le bouton après 10 secondes
+    setTimeout(() => {
+        skipButton.style.display = 'block';
+    }, 10000); // Temps pour afficher le bouton (10 secondes)
+
+    // Déclenche la fin de la question après 20 secondes
     timerInterval = setTimeout(() => {
         handleAnswer();
-    }, 20000); // Passé à 20000ms (20s)
+    }, 20000);
+
+    // Gérer le clic sur le bouton "Passer"
+    skipButton.onclick = () => {
+        clearInterval(timerInterval); // Annule le timer si le bouton est cliqué
+        skipButton.style.display = 'none'; // Cache le bouton
+        handleAnswer(); // Passe à la question suivante
+    };
 }
-
-
   showQuestion();
   </script>
 </body>
