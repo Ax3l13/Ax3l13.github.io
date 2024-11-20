@@ -44,18 +44,15 @@
       list-style: none;
       padding: 0;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       flex-wrap: wrap;
       position: relative;
       margin-top: 50px;
       width: 80%;
     }
     .choices li {
-      width: 35%;
+      width: 48%; /* 2 items per row */
       margin: 10px 0;
-    }
-    .choices li:nth-child(odd) {
-      margin-right: 10%;
     }
     .choices li button {
       background-color: #007bff;
@@ -121,6 +118,16 @@
       display: none;
       margin-top: 20px;
     }
+    #end-page {
+      display: none;
+      margin-top: 50px;
+      font-size: 24px;
+      text-align: center;
+    }
+    button[disabled] {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -132,9 +139,14 @@
   </div>
   <ul class="choices" id="choices"></ul>
   <button id="skip-button">Passer</button>
+  <button id="quit-button">Quitter</button>
 
   <div id="question-squares"></div>
   <div id="score-container">Score: <span id="score">0</span></div>
+  
+  <div id="end-page">
+    <p>Votre score : <span id="final-score"></span>/40</p>
+  </div>
 
   <script>
     const questions = [
@@ -162,7 +174,7 @@
       for (let i = 0; i < 40; i++) {
         const square = document.createElement('div');
         square.classList.add('question-square');
-        square.onclick = () => goToQuestion(i); // Lien vers la question
+        square.onclick = () => {}; // Désactive le clic pendant le quiz
         questionSquaresContainer.appendChild(square);
       }
     }
@@ -176,7 +188,7 @@
     // Affichage de la question actuelle
     function showQuestion() {
       if (currentQuestionIndex >= questions.length) {
-        alert(`QCM terminé ! Vous avez obtenu ${score}/40`);
+        showEndPage();
         return;
       }
 
@@ -206,6 +218,11 @@
         choiceEl.appendChild(buttonEl);
         choicesEl.appendChild(choiceEl);
       });
+
+      // Préréselectionner la 1ère réponse
+      const firstChoice = document.querySelector('.choices button');
+      firstChoice.classList.add('selected');
+      selectedAnswers = [0];
 
       startTimer();
     }
@@ -240,28 +257,42 @@
       setTimeout(() => {
         currentQuestionIndex++;
         showQuestion();
-      }, 2000);
+      }, 1000);
+    }
+
+    function skipQuestion() {
+      currentQuestionIndex++;
+      showQuestion();
+    }
+
+    function quitQuiz() {
+      showEndPage();
+    }
+
+    function showEndPage() {
+      document.getElementById('end-page').style.display = 'block';
+      document.getElementById('final-score').textContent = `${score}/40`;
+      document.getElementById('qcm-container').style.display = 'none';
+      document.getElementById('question-squares').style.display = 'none';
+      document.getElementById('score-container').style.display = 'none';
     }
 
     function startTimer() {
+      let timeLeft = 30;
       const timerEl = document.getElementById('timer');
-      const skipButton = document.getElementById('skip-button');
-      skipButton.style.display = 'none'; // Masque le bouton au début
-
       timerEl.style.width = '100%';
-      timerEl.style.transition = 'none';
-
-      setTimeout(() => {
-        timerEl.style.transition = 'width 20s linear';
-        timerEl.style.width = '0%';
-      }, 50);
-
-      setTimeout(() => {
-        skipButton.style.display = 'block'; // Affiche le bouton pour passer
-        handleAnswer();
-      }, 20000);
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        const width = (timeLeft / 30) * 100;
+        timerEl.style.width = `${width}%`;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          handleAnswer();
+        }
+      }, 1000);
     }
 
+    // Fonction de mélange des éléments dans un tableau
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -269,13 +300,12 @@
       }
     }
 
-    function goToQuestion(index) {
-      currentQuestionIndex = index;
-      showQuestion();
-    }
-
+    // Initialisation
     createQuestionSquares();
     showQuestion();
+
+    document.getElementById('skip-button').onclick = skipQuestion;
+    document.getElementById('quit-button').onclick = quitQuiz;
   </script>
 </body>
 </html>
