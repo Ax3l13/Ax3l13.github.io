@@ -5,21 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO Meta Tags -->
   <title>Mon Site</title>
   <meta name="description" content="Regardez gratuitement des films, séries, documentaires et anime en HD sur Mon Site. Profitez d'un large catalogue sans inscription, en streaming rapide et sécurisé !">
   <meta name="keywords" content="Mon Site, streaming, films gratuits, séries en streaming, Mon Site, monsite.website, MON SITE streaming, MON SITE films, MON SITE séries, monsite streaming gratuit, streaming monsite, monsite HD, monsite anime, monsite documentaires, regarder monsite, monsite en ligne, monsite films gratuits, monsite séries gratuites, monsite top films, monsite top séries, meilleur monsite, plateforme monsite, monsite avis, monsite review, monsite trucs, streaming français, streaming HD, site streaming, films HD, séries HD, anime HD, documentaire HD, film gratuit, série gratuite, regarder films HD, regarder séries HD, meilleur site streaming, streaming sans inscription, streaming rapide, streaming sécurisé, streaming illimité, streaming online, monsite.fr, monsite-net, monsite-app, monsite.club, monsite.pro, monsite streaming HD, monsite gratuit, monsite nouveautés, monsite 2025, monsite catalogue, monsite séries 2025, monsite films 2025, Discord">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://monsite.website/" />
 
-  <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://monsite.website/">
   <meta property="og:title" content="Mon Site - Streaming Gratuit de Films et Séries">
   <meta property="og:description" content="Profitez du meilleur streaming gratuit sur Mon Site : films, séries, anime, documentaires en HD sans inscription.">
   <meta property="og:image" content="https://monsite.website/og-image.jpg">
 
-  <!-- JSON-LD WebSite Schema -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -35,7 +32,6 @@
     }
   </script>
 
-  <!-- Styles & Animations -->
   <style>
     html, body {
       height: 100%;
@@ -175,8 +171,6 @@
   <div class="centered-content">
     <h1>Bienvenue sur Mon Site - Streaming Gratuit de Films et Séries</h1>
     <h2>Profitez du meilleur du streaming sur Mon Site sans inscription</h2>
-    <!-- TODO: Ajouter des liens internes vers les pages principales du site lorsque disponibles. -->
-    <!-- Mon Site Button -->
     <div class="btn-wrapper" id="wrapper1">
       <button class="button" id="btn1">
         <span>Accéder à Mon Site</span>
@@ -188,16 +182,26 @@
         </span>
       </button>
     </div>
-    <!-- Discord Button -->
     <div class="btn-wrapper" id="wrapper2">
       <button class="button discord" id="btn2">
         <span>Rejoindre le Discord</span>
         <span class="icon"></span>
       </button>
     </div>
+
+    <div class="btn-wrapper" id="wrapper3">
+      <button class="button" id="btn3">
+        <span>Accéder à Netflix</span>
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.666" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </span>
+      </button>
+    </div>
   </div>
 
-  <!-- 3D Interaction JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
   <script>
     function setup3D(wrapperId, btnId, url) {
@@ -220,6 +224,7 @@
     }
     setup3D('wrapper1', 'btn1', 'https://monsite.website');
     setup3D('wrapper2', 'btn2', 'https://discord.gg/2wSpDJjbvP');
+    setup3D('wrapper3', 'btn3', 'https://les3as.synology.me/web_test/Netflix/main/index.php');
     particlesJS('particles-js', {
       "particles": {
         "number": {
