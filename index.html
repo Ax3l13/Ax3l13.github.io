@@ -1,331 +1,68 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Mon Site</title>
-  <meta name="description" content="Regardez gratuitement des films, séries, documentaires et anime en HD sur Mon Site. Profitez d'un large catalogue sans inscription, en streaming rapide et sécurisé !">
-  <meta name="keywords" content="Mon Site, streaming, films gratuits, séries en streaming, Mon Site, monsite.website, MON SITE streaming, MON SITE films, MON SITE séries, monsite streaming gratuit, streaming monsite, monsite HD, monsite anime, monsite documentaires, regarder monsite, monsite en ligne, monsite films gratuits, monsite séries gratuites, monsite top films, monsite top séries, meilleur monsite, plateforme monsite, monsite avis, monsite review, monsite trucs, streaming français, streaming HD, site streaming, films HD, séries HD, anime HD, documentaire HD, film gratuit, série gratuite, regarder films HD, regarder séries HD, meilleur site streaming, streaming sans inscription, streaming rapide, streaming sécurisé, streaming illimité, streaming online, monsite.fr, monsite-net, monsite-app, monsite.club, monsite.pro, monsite streaming HD, monsite gratuit, monsite nouveautés, monsite 2025, monsite catalogue, monsite séries 2025, monsite films 2025, Discord">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://monsite.website/" />
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://monsite.website/">
-  <meta property="og:title" content="Mon Site - Streaming Gratuit de Films et Séries">
-  <meta property="og:description" content="Profitez du meilleur streaming gratuit sur Mon Site : films, séries, anime, documentaires en HD sans inscription.">
-  <meta property="og:image" content="https://monsite.website/og-image.jpg">
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Mon Site",
-      "url": "https://les3as.synology.me/web_test/azerty/pages/index.php",
-      "description": "Votre plateforme de streaming ultime pour regarder les derniers films et séries en HD. Nouveautés quotidiennes, sans inscription obligatoire, et en qualité maximale !",
-      "keywords": "Mon Site, streaming, films en streaming, séries en streaming, HD, gratuit, nouveautés",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Mon Site"
-      }
-    }
-  </script>
-
-  <style>
-    html, body {
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #f5f5f5;
-      width: 100vw;
-      height: 100vh;
-      min-height: 100vh;
-      min-width: 100vw;
-      max-height: 100vh;
-      max-width: 100vw;
-      overflow: hidden;
-    }
-    .centered-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
-      gap: 2rem;
-      position: relative;
-      z-index: 1;
-      padding: 2rem 1rem;
-      box-sizing: border-box;
-    }
-    h1 {
-      font-size: 2.2rem;
-      text-align: center;
-      margin: 0 0 0.5em 0;
-      line-height: 1.2;
-    }
-    h2 {
-      font-size: 1.3rem;
-      text-align: center;
-      margin: 0 0 1.5em 0;
-      font-weight: 400;
-      color: #bdbdbd;
-    }
-    .btn-wrapper {
-      width: 100%;
-      max-width: 350px;
-      margin: 0 auto;
-    }
-    button.button {
-      width: 100%;
-      min-width: 0;
-      font-size: 1.1rem;
-      padding: 1.1rem 1rem;
-      border-radius: 0.75rem;
-      display: flex;
-      justify-content: center;
-    }
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .btn-wrapper {
-      transform: perspective(500px) rotateX(0deg) rotateY(0deg) scale(1);
-      transition: transform 0.2s ease-out;
-      will-change: transform;
-    }
-    button.button {
-      cursor: pointer;
-      font-size: 1.5rem;
-      font-weight: 700;
-      border-radius: 0.75rem;
-      border: 2px solid #424040;
-      padding: 1.5rem 3rem;
-      background-color: #282828;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-      transition: background-color 0.15s ease;
-    }
-    button.button:hover {
-      background-color: rgba(40,40,40,0.85);
-    }
-    button.button .icon {
-      display: inline-block;
-      transition: transform 0.2s ease-out;
-    }
-    /* Discord button variant */
-    .discord {
-      border-color: #5865F2;
-      background-color: #5865F2;
-    }
-    .discord:hover {
-      background-color: rgba(88,101,242,0.85);
-    }
-    @media (max-width: 600px) {
-      html, body {
-        min-width: 100vw;
-        min-height: 100vh;
-        max-width: 100vw;
-        max-height: 100vh;
-        overflow-x: hidden;
-      }
-      .centered-content {
-        padding: 1rem 0.2rem;
-        gap: 1.2rem;
-      }
-      h1 {
-        font-size: 1.3rem;
-      }
-      h2 {
-        font-size: 1rem;
-      }
-      .btn-wrapper {
-        max-width: 95vw;
-      }
-      button.button {
-        font-size: 1rem;
-        padding: 0.9rem 0.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sommaire de mes projets</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-duotone-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-duotone-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-duotone-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-duotone-light.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-light.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-light.css">
+    <script type="text/javascript" src="https://beacon-v2.helpscout.net/static/js/vendor.a0309525.js"></script>
+    <script type="text/javascript" src="https://beacon-v2.helpscout.net/static/js/main.bc521e4e.js"></script>
+    <script type="text/javascript" async="" src="https://beacon-v2.helpscout.net"></script>
+    <script type="text/javascript" async="" charset="utf-8" src="https://www.gstatic.com/recaptcha/releases/GUGrl5YkSwqiWrzO3ShIKDlu/recaptcha__fr.js" crossorigin="anonymous" integrity="sha384-xdZ7ICH5PFf9v+mnnEAJ/upCLoG+uGbDw8iweC0V4vY2hhQZpq6c22P8by7Km7A8"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-BPMS41FJD2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
   <div id="particles-js"></div>
   <div class="centered-content">
-    <h1>Bienvenue sur Mon Site - Streaming Gratuit de Films et Séries</h1>
-    <h2>Profitez du meilleur du streaming sur Mon Site sans inscription</h2>
-    <div class="btn-wrapper" id="wrapper1">
-      <button class="button" id="btn1">
-        <span>Accéder à Mon Site</span>
-        <span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.666" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="m12 5 7 7-7 7"></path>
-          </svg>
-        </span>
-      </button>
-    </div>
-    <div class="btn-wrapper" id="wrapper2">
-      <button class="button discord" id="btn2">
-        <span>Rejoindre le Discord</span>
-        <span class="icon"></span>
-      </button>
-    </div>
+    <h1>Bienvenue sur le sommaire de mes projets</h1>
+    <h2>Voici la liste de mes réalisations et projets en cours</h2>
+    <div class="grid-container">
 
-    <div class="btn-wrapper" id="wrapper3">
-      <button class="button" id="btn3">
-        <span>Accéder à Netflix</span>
-        <span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.666" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="m12 5 7 7-7 7"></path>
-          </svg>
-        </span>
-      </button>
+      <a href="https://maisonmsn.synology.me/web_test/Netflix/main/index.php" class="grid-item red">
+        <i class="fa-regular fa-images fa-2xl" alt="Logo Netflix"> </i>
+        <h3><i class="fa-solid fa-clapperboard-play"></i> Netflix</h3>
+        <p>Accédez à vos films et séries préférés sur Netflix.</p>
+      </a>
+
+      <a href="https://maisonmsn.synology.me/web_test/Lunaris/index.php" class="grid-item blue">
+        <img src="https://via.placeholder.com/80" alt="Logo Lunaris">
+        <h3><i class="fa-solid fa-clapperboard-play"></i> Lunaris</h3>
+        <p>Accédez à vos films et séries préférés sur Lunaris.</p>
+      </a>
+
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    function setup3D(wrapperId, btnId, url) {
-      const wrapper = document.getElementById(wrapperId);
-      const btn = document.getElementById(btnId);
-      btn.addEventListener('click', () => window.open(url, '_blank'));
-      wrapper.addEventListener('mousemove', e => {
-        const rect = wrapper.getBoundingClientRect();
-        const xVal = e.clientX - rect.left - rect.width / 2;
-        const yVal = e.clientY - rect.top - rect.height / 2;
-        const rotateX = (-yVal / rect.height) * 35;
-        const rotateY = (xVal / rect.width) * 35;
-        wrapper.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.15)`;
-        btn.querySelector('.icon').style.transform = `translateX(8px)`;
-      });
-      wrapper.addEventListener('mouseleave', () => {
-        wrapper.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg) scale(1)';
-        btn.querySelector('.icon').style.transform = 'translateX(0)';
-      });
-    }
-    setup3D('wrapper1', 'btn1', 'https://monsite.website');
-    setup3D('wrapper2', 'btn2', 'https://discord.gg/2wSpDJjbvP');
-    setup3D('wrapper3', 'btn3', 'https://les3as.synology.me/web_test/Netflix/main/index.php');
     particlesJS('particles-js', {
       "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#ffffff"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          },
-          "polygon": {
-            "nb_sides": 5
-          }
-        },
-        "opacity": {
-          "value": 0.5,
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": {
-            "enable": false,
-            "speed": 40,
-            "size_min": 0.1,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 1.2,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 }},
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 1.2 }
       },
       "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "grab"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 180,
-            "line_linked": {
-              "opacity": 0.8
-            }
-          },
-          "bubble": {
-            "distance": 200,
-            "size": 8,
-            "duration": 2,
-            "opacity": 0.8,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 100,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
+        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }},
+        "modes": { "grab": { "distance": 180, "line_linked": { "opacity": 0.8 }}}
       },
       "retina_detect": true
     });
