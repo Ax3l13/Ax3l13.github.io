@@ -47,6 +47,7 @@
         .logo {
             width: 72px;
             height: 72px;
+            text-decoration: none;
             margin: 0 auto 40px;
             background: #000000;
             border-radius: 16px;
@@ -210,35 +211,31 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">→</div>
+        <a class="logo" href="https://les3as.synology.me/web_test/autoecoleles3as/main/">→</a>
         
         <h1>Bienvenue</h1>
         <p class="subtitle">
-            Accédez à notre plateforme innovante et découvrez une nouvelle façon de travailler. Simple, puissant, efficace.
+            Pour accéder à mon site projet, veuillez cliquer sur le bouton ci-dessous ou attendre la redirection automatique dans <span id="countdown">10</span> secondes.
         </p>
 
         <div class="button-container">
-            <a href="https://example.com" class="btn btn-primary">Accéder à la plateforme</a>
-            <a href="#features" class="btn btn-secondary">En savoir plus</a>
+            <a href="https://les3as.synology.me/web_test/autoecoleles3as/main/" about="_blank" class="btn btn-primary">Accéder à la plateforme</a>
+            <a href="#" class="btn btn-secondary">En savoir plus</a>
         </div>
 
-        <div class="features" id="features">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-title">Rapide</div>
-                <div class="feature-text">Performance optimale pour une expérience fluide</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <div class="feature-title">Sécurisé</div>
-                <div class="feature-text">Vos données protégées avec les standards les plus élevés</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">✨</div>
-                <div class="feature-title">Intuitif</div>
-                <div class="feature-text">Interface pensée pour la simplicité d'utilisation</div>
-            </div>
-        </div>
     </div>
 </body>
+<script>
+    let countdownElement = document.getElementById('countdown');
+    let countdown = 10;
+
+    let interval = setInterval(() => {
+        countdown--;
+        countdownElement.textContent = countdown;
+        if (countdown === 0) {
+            clearInterval(interval);
+            window.location.href = "https://les3as.synology.me/web_test/autoecoleles3as/main/";
+        }
+    }, 1000);
+</script>
 </html>
