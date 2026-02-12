@@ -115,6 +115,12 @@
             border: 1.5px solid #d2d2d7;
         }
 
+        .btn-secondary.btn-bleu {
+            background: transparent;
+            color: #3498db;
+            border: 1.5px solid #3599db;
+        }
+
         .btn-secondary:hover {
             background: #f5f5f7;
             border-color: #86868b;
