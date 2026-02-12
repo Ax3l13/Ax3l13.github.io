@@ -117,8 +117,8 @@
 
         .btn-secondary.btn-bleu {
             background: transparent;
-            color: #3498db;
-            border: 1.5px solid #3599db;
+            color: #3498db !important;
+            border: 1.5px solid #d2d2d7;
         }
 
         .btn-secondary:hover {
