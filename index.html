@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href"style.css">
-    <title>Portail - Accès à la Plateforme</title>
+    <title>Portail - Accéder au site web</title>
 </head>
 <body>
     <div class="container">
@@ -22,17 +22,5 @@
 
     </div>
 </body>
-<script>
-    let countdownElement = document.getElementById('countdown');
-    let countdown = 10;
-
-    let interval = setInterval(() => {
-        countdown--;
-        countdownElement.textContent = countdown;
-        if (countdown === 0) {
-            clearInterval(interval);
-            window.location.href = "https://les3as.synology.me/web_test/autoecoleles3as/main/";
-        }
-    }, 1000);
-</script>
+<script src="script.js"></script>   
 </html>
