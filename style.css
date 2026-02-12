@@ -127,7 +127,7 @@
             transform: translateY(-1px);
         }
        .btn-secondary.btn-bleu:hover {
-            background: rgba(52, 152, 219,0.3);
+            background: rgba(52, 152, 219,0.1);
             border-color: #2980b9;
             transform: translateY(-1px);
         }
